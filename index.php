@@ -146,6 +146,7 @@ if($_SESSION["dataSiswa"] != null){
       <td>
         <a class="btn btn-danger" href="hapus.php?id=<?= $key ?>">Hapus</a>
         <a class="btn btn-warning" href="edit.php?id=<?= $key ?>">edit</a>
+        <a class="btn btn-dark" href="detail.php?id=<?= $key ?>">detail</a>
       </td>
     </tr>
   <?php endforeach ;?>
