@@ -1,5 +1,9 @@
 <?php
+
 session_start();
+$error = null;
+$button = null;
+$print = null;
 if(isset($_POST["btn"])){
   $nama = $_POST["nama"];
   $nis = $_POST["nis"];
