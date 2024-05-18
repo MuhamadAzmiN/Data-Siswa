@@ -1,39 +1,16 @@
 <?php
 session_start();
-class DataSiswa {
-  public $nama,
-          $nis,
-          $rayon;
-
-  public function __construct($nama, $nis, $rayon)
-  {
-    $this->nama = $nama;
-    $this->nis = $nis;
-    $this->rayon = $rayon;
-  }
-
-  public function getData()
-  {
-    return $this->nama . $this->nis . $this->rayon;
-  }
-
-}
-
 if(isset($_POST["btn"])){
   $nama = $_POST["nama"];
   $nis = $_POST["nis"];
   $rayon = $_POST["rayon"];
-  
-  // Buat variabel untuk menandai apakah data sudah ada
   $dataSudahAda = false;
 
-  // Lakukan iterasi untuk memeriksa setiap data yang ada di session
   if(isset($_SESSION["dataSiswa"])) {
       foreach ($_SESSION["dataSiswa"] as $data) {
           if ($data["nama"] == $nama) {
-              // Jika data sudah ada, atur variabel $dataSudahAda menjadi true
               $dataSudahAda = true;
-              break; // Keluar dari loop karena sudah ditemukan data yang sama
+              break;
           }
       }
   }
@@ -52,6 +29,7 @@ if(isset($_POST["btn"])){
 
 if($_SESSION["dataSiswa"] != null){
   $button = ' <a class="btn btn-danger mt-2" href="hapusAll.php">Hapus</a>';
+  $print = ' <a onclick="printPage()"  class="btn btn-success mt-2" href="print.php">Print</a>';
 }
 
 
@@ -109,6 +87,7 @@ if($_SESSION["dataSiswa"] != null){
     <div>
       <button name="btn" style="width: 120px;" type="submit" class="btn btn-primary mt-2 ">Tambah</button>
       <?= $button ;?>
+      <?= $print ;?>
     </div>
   </div>
 </form>
@@ -156,6 +135,7 @@ if($_SESSION["dataSiswa"] != null){
 <?php endif ;?>
 
 </div>
+
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-SYyqXdpJnFDTLPQ4d+aCXOwkgxEV9vmV1Evr3fNfNEW0c8jweW0CKfdvuqQtkUfY" crossorigin="anonymous"></script>
