@@ -10,6 +10,8 @@ if(isset($_POST["btn"])){
   $rayon = $_POST["rayon"];
   $dataSudahAda = false;
 
+  $_SESSION["dataSiswa"] = null;
+
   if(isset($_SESSION["dataSiswa"])) {
       foreach ($_SESSION["dataSiswa"] as $data) {
           if ($data["nama"] == $nama) {
